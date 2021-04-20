@@ -1,0 +1,97 @@
+var computerchoice=randomNumber(1,3);
+var userchoice;
+updateComputerTextBox();
+
+function updateComputerTextBox(){
+  if(computerchoice==1){
+    setText("computerchoicetext","Computer Choose ROCK!");
+    
+  }else if(computerchoice==2){
+  setText("computerchoicetext","Computer Choose PAPER!");
+
+  }else{
+
+        setText("computerchoicetext","Computer Choose SCISSORS!");
+
+  }
+}
+function calculateWinner(){
+  if(userchoice==1){
+    if(computerchoice==1){
+      //tie
+      setText("resultTextBox","ITS A TIE!");
+    }else if(computerchoice==2){
+      //computer wins
+      setText("resultTextBox","YOU LOSE!");
+
+    }else{
+      //user wins
+      setText("resultTextBox","YOU WINS!");
+    }
+  }else if(userchoice==2){
+    if(computerchoice==1){
+      //user wins
+            setText("resultTextBox","YOU WINS!");
+
+    }else if(computerchoice==2){
+      //tie
+      setText("resultTextBox","ITS A TIE!");
+
+    }else{
+      //computer
+        setText("resultTextBox","YOU LOSE!");
+
+    }
+  }else{//userchoice==3
+    if(computerchoice==1){
+      //computer
+        setText("resultTextBox","YOU LOSE!");
+
+    }else if(computerchoice==2){
+      //user
+        setText("resultTextBox","YOU WINS!");
+    }else{
+      //tie
+      setText("resultTextBox","ITS A TIE!");
+
+    }
+  }
+}
+
+
+//event function
+
+onEvent("playButton", "click", function(event) {
+  setScreen("Choosescreen");
+});
+onEvent("rockButton", "click", function(event) {
+   userchoice=1;
+   setText("ChoiceText","You Choose ROCK");
+      calculateWinner();
+     setScreen("resultscreen");
+
+});
+
+onEvent("paperButton", "click", function(event ) {
+
+     userchoice=2;
+     setText("ChoiceText","You Choose PAPER");
+     calculateWinner();
+     setScreen("resultscreen");
+     
+});
+
+onEvent("ScissorsButton", "click", function(event) {
+  
+     userchoice=3;
+
+     setText("ChoiceText","You Choose SCISSORS");
+     calculateWinner();
+     setScreen("resultscreen");
+
+
+});
+onEvent("playagain", "click", function(event ) {
+  setScreen("welcomescreen");
+  
+});
